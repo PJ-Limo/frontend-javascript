@@ -6,36 +6,34 @@ interface Student {
   }
   
   const student1: Student = {
-    firstName: 'John',
-    lastName: 'Doe',
-    age: 25,
-    location: 'New York'
+    firstName: 'Denzel',
+    lastName: 'Washington',
+    age: 20,
+    location: 'Cairo'
   };
   
   const student2: Student = {
-    firstName: 'Jane',
+    firstName: 'Clarissa',
     lastName: 'Smith',
-    age: 30,
-    location: 'Los Angeles'
+    age: 19,
+    location: 'Abuja'
   };
   
   const studentsList: Student[] = [student1, student2];
-  
-  const table = document.createElement('table');
-  const tableBody = document.createElement('tbody');
-  table.appendChild(tableBody);
-  
-  studentsList.forEach(student => {
-    const row = document.createElement('tr');
-    const firstNameCell = document.createElement('td');
-    const locationCell = document.createElement('td');
-  
-    firstNameCell.textContent = student.firstName;
-    locationCell.textContent = student.location;
-  
-    row.appendChild(firstNameCell);
-    row.appendChild(locationCell);
-    tableBody.appendChild(row);
-  });
-  
-  document.body.appendChild(table);
+
+const table = document.createElement('table');
+const headerRow = table.insertRow();
+const headerCell1 = headerRow.insertCell(0);
+const headerCell2 = headerRow.insertCell(1);
+headerCell1.innerText = 'First Name';
+headerCell2.innerText = 'Location';
+
+studentsList.forEach(student => {
+  const row = table.insertRow();
+  const cell1 = row.insertCell(0);
+  const cell2 = row.insertCell(1);
+  cell1.innerText = student.firstName;
+  cell2.innerText = student.location;
+});
+
+document.body.appendChild(table);
